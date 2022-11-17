@@ -16,5 +16,9 @@
     "react-dom": "18.2.0",
     "react-hook-form": "^7.39.4",
     "uuidv4": "^6.2.13"
+  },
+  "devDependencies": {
+    "@types/node": "18.11.9",
+    "@types/react": "18.0.25"
   }
 }
