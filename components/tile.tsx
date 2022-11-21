@@ -57,7 +57,7 @@ const Tile = ({ card, cancel, editCard }: Props) => {
     <>
       <div>
         {edit ? (
-          <div>
+          <div className="inputs">
             <input type="text" value={title} onChange={getTitle} />
             <input
               type="text"
