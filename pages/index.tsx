@@ -15,15 +15,6 @@ const Home: NextPage = () => {
   const [ideas, setIdeas] = useState<Idea[]>(initialList);
 
   useEffect(() => {
-    //                   getItem                                                 ????
-    // Argument of type 'string | null' is not assignable to parameter of type 'string'.
-    // Type 'null' is not assignable to type 'string'.
-
-    // Storage.getItem(key: string): string | null
-
-    // JSON.parse(text: string,
-    // Argument of type 'null' is not assignable to parameter of type 'string'.
-
     const storedIdeas = localStorage.getItem('ideas');
     const savedList: Idea[] = storedIdeas ? JSON.parse(storedIdeas) : [];
     if (savedList.length > 0) {
