@@ -1,5 +1,7 @@
 import type { NextPage } from 'next';
 import React, { useState, useEffect, useMemo } from 'react';
+
+import { Button, Container, Col, Row, Card } from 'react-bootstrap';
 import Tile from '../components/tile';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -82,24 +84,22 @@ const Home: NextPage = () => {
       <header>
         <h1 className="header">My Idea Board</h1>
       </header>
-      <button className="btn new" onClick={addOne}>
-        Add New Idea
-      </button>
-      <button className="btn sort" onClick={sortName}>
-        Sort by Name
-      </button>
-      <button className="btn sort" onClick={sortDate}>
-        Sort by Date
-      </button>
-      <div className="board">
-        {ideas.map((item) => {
-          return (
-            <ul key={item.id}>
-              <Tile card={item} cancel={removeOne} editCard={editCard} />
-            </ul>
-          );
-        })}
-      </div>
+      <Container className="my-2">
+        <Button onClick={addOne}>Add New Idea</Button>
+        <Button onClick={sortName}>Sort by Name</Button>
+        <Button onClick={sortDate}>Sort by Date</Button>
+      </Container>
+      <Container>
+        <Row>
+          {ideas.map((item) => {
+            return (
+              <Col key={item.id}>
+                <Tile card={item} cancel={removeOne} editCard={editCard} />
+              </Col>
+            );
+          })}
+        </Row>
+      </Container>
     </div>
   );
 };

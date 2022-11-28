@@ -13,16 +13,6 @@ body {
   flex-wrap: wrap;
 }
 
-.new {
-  background-color: #12343b;
-  color: white;
-}
-
-.sort {
-  background-color: #12343b;
-  color: white;
-}
-
 .error {
   color: red;
   font-size: 20px;
@@ -35,8 +25,7 @@ body {
   width: 200px;
   height: 200px;
   border: solid 1px;
-  background-color: #2d545e;
-  color: white;
+  color: #2d545e;
   border-radius: 5%;
 }
 

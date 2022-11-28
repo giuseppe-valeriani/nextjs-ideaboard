@@ -1,4 +1,6 @@
+import { BADRESP } from 'dns';
 import React, { useState } from 'react';
+import { Card, Container, Button } from 'react-bootstrap';
 import { Idea } from '../pages/index';
 
 type Props = {
@@ -55,33 +57,41 @@ const Tile = ({ card, cancel, editCard }: Props) => {
 
   return (
     <>
-      <div>
+      <Container className="my-3">
         {edit ? (
           <div>
-            <input type="text" value={title} onChange={getTitle} />
+            <input
+              type="text"
+              value={title}
+              onChange={getTitle}
+              className="input-group-text"
+              aria-label="Title"
+            />
             <input
               type="text"
               value={content}
               onChange={getContent}
+              className="input-group-text"
+              aria-label="Content"
               maxLength={140}
             />
             <div className="error">{error}</div>
           </div>
         ) : (
-          <div className="card">
-            <div className="card-title">{title}</div>
-            {content}
-            <div>{time}</div>
-          </div>
+          <Card style={{ width: '300px', height: '200px' }}>
+            <Card.Header className="card-title">{title}</Card.Header>
+            <Card.Body>{content}</Card.Body>
+            <Card.Footer>{time}</Card.Footer>
+          </Card>
         )}
-      </div>
+      </Container>
       <div>
-        <button className="button edit" onClick={editMode}>
+        <Button size="sm" onClick={editMode}>
           {edit ? 'Save' : 'Edit'}
-        </button>
-        <button className="button delete" onClick={erase}>
+        </Button>
+        <Button size="sm" variant="danger" onClick={erase}>
           Remove
-        </button>
+        </Button>
       </div>
     </>
   );
