@@ -1,7 +1,5 @@
 import type { NextPage } from 'next';
-import Head from 'next/head';
 import React, { useState, useEffect, useMemo } from 'react';
-import { Button, Container, Row, Col } from 'react-bootstrap';
 import Tile from '../components/tile';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -17,6 +15,15 @@ const Home: NextPage = () => {
   const [ideas, setIdeas] = useState<Idea[]>(initialList);
 
   useEffect(() => {
+    //                   getItem                                                 ????
+    // Argument of type 'string | null' is not assignable to parameter of type 'string'.
+    // Type 'null' is not assignable to type 'string'.
+
+    // Storage.getItem(key: string): string | null
+
+    // JSON.parse(text: string,
+    // Argument of type 'null' is not assignable to parameter of type 'string'.
+
     const storedIdeas = localStorage.getItem('ideas');
     const savedList: Idea[] = storedIdeas ? JSON.parse(storedIdeas) : [];
     if (savedList.length > 0) {
@@ -33,7 +40,7 @@ const Home: NextPage = () => {
   const addOne = (): void => {
     let uuid = uuidv4();
     const newCard = {
-      title: 'Title',
+      title: 'title',
       content: 'content',
       date: new Date().toLocaleString(),
       id: uuid,
@@ -80,30 +87,29 @@ const Home: NextPage = () => {
   };
 
   return (
-    <>
-      <Head>
-        <title>My Idea Board</title>
-        <h1 className="display-3">My Idea Board</h1>
-      </Head>
-      <Container className="my-3">
-        <Button onClick={addOne} variant="success">
-          Add New Idea
-        </Button>
-        <Button onClick={sortName}>Sort by Name</Button>
-        <Button onClick={sortDate}>Sort by Date</Button>
-      </Container>
-      <Container className="my-3">
-        <Row>
-          {ideas.map((item) => {
-            return (
-              <Col key={item.id}>
-                <Tile card={item} cancel={removeOne} editCard={editCard} />
-              </Col>
-            );
-          })}
-        </Row>
-      </Container>
-    </>
+    <div>
+      <header>
+        <h1 className="header">My Idea Board</h1>
+      </header>
+      <button className="btn new" onClick={addOne}>
+        Add New Idea
+      </button>
+      <button className="btn sort" onClick={sortName}>
+        Sort by Name
+      </button>
+      <button className="btn sort" onClick={sortDate}>
+        Sort by Date
+      </button>
+      <div className="board">
+        {ideas.map((item) => {
+          return (
+            <ul key={item.id}>
+              <Tile card={item} cancel={removeOne} editCard={editCard} />
+            </ul>
+          );
+        })}
+      </div>
+    </div>
   );
 };
 
