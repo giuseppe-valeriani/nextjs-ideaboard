@@ -1,4 +1,3 @@
-import { BADRESP } from 'dns';
 import React, { useState } from 'react';
 import { Card, Container, Button } from 'react-bootstrap';
 import { Idea } from '../pages/index';
@@ -78,7 +77,12 @@ const Tile = ({ card, cancel, editCard }: Props) => {
             <div className="error">{error}</div>
           </div>
         ) : (
-          <Card style={{ width: '300px', height: '200px' }}>
+          <Card
+            style={{
+              minWidth: '150px',
+              minHeight: '100px',
+            }}
+          >
             <Card.Header className="card-title">{title}</Card.Header>
             <Card.Body>{content}</Card.Body>
             <Card.Footer>{time}</Card.Footer>
