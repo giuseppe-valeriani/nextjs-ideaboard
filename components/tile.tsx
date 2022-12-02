@@ -89,7 +89,7 @@ const Tile = ({ card, cancel, editCard }: Props) => {
           </Card>
         )}
       </Container>
-      <div>
+      <div className="p-3">
         <Button size="sm" onClick={editMode}>
           {edit ? 'Save' : 'Edit'}
         </Button>
