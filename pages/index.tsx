@@ -84,13 +84,13 @@ const Home: NextPage = () => {
       <header>
         <h1 className="header">My Idea Board</h1>
       </header>
-      <Container className="my-2">
+      <Container className="my-4 p-4">
         <Button onClick={addOne}>Add New Idea</Button>
         <Button onClick={sortName}>Sort by Name</Button>
         <Button onClick={sortDate}>Sort by Date</Button>
       </Container>
       <Container>
-        <Row>
+        <Row className="schema">
           {ideas.map((item) => {
             return (
               <Col key={item.id}>
