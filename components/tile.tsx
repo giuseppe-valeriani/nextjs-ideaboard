@@ -81,7 +81,7 @@ const Tile = ({ card, cancel, editCard }: Props) => {
             style={{
               minWidth: '150px',
               minHeight: '100px',
-              width: '300px',
+              width: '350px',
             }}
           >
             <Card.Header className="card-title">{title}</Card.Header>
