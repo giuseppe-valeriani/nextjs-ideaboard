@@ -90,10 +90,10 @@ const Tile = ({ card, cancel, editCard }: Props) => {
         )}
       </Container>
       <div className="p-3">
-        <Button size="sm" onClick={editMode}>
+        <Button className="mx-1" size="sm" onClick={editMode}>
           {edit ? 'Save' : 'Edit'}
         </Button>
-        <Button size="sm" variant="danger" onClick={erase}>
+        <Button className="mx-1" size="sm" variant="danger" onClick={erase}>
           Remove
         </Button>
       </div>

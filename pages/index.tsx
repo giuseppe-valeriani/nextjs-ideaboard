@@ -85,9 +85,15 @@ const Home: NextPage = () => {
         <h1 className="header">My Idea Board</h1>
       </header>
       <Container className="my-4 p-4">
-        <Button onClick={addOne}>Add New Idea</Button>
-        <Button onClick={sortName}>Sort by Name</Button>
-        <Button onClick={sortDate}>Sort by Date</Button>
+        <Button className="mx-1" onClick={addOne}>
+          Add New Idea
+        </Button>
+        <Button className="mx-1" onClick={sortName}>
+          Sort by Name
+        </Button>
+        <Button className="mx-1" onClick={sortDate}>
+          Sort by Date
+        </Button>
       </Container>
       <Container>
         <Row className="schema">
