@@ -1,7 +1,6 @@
 import type { NextPage } from 'next';
 import React, { useState, useEffect, useMemo } from 'react';
 
-import { Button, Container, Col, Row, Card } from 'react-bootstrap';
 import Tile from '../components/tile';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -82,30 +81,23 @@ const Home: NextPage = () => {
   return (
     <div>
       <header>
-        <h1 className="header">My Idea Board</h1>
+        <h1>My Idea Board</h1>
       </header>
-      <Container className="my-4 p-4">
-        <Button className="mx-1" onClick={addOne}>
-          Add New Idea
-        </Button>
-        <Button className="mx-1" onClick={sortName}>
-          Sort by Name
-        </Button>
-        <Button className="mx-1" onClick={sortDate}>
-          Sort by Date
-        </Button>
-      </Container>
-      <Container>
-        <Row className="schema">
-          {ideas.map((item) => {
-            return (
-              <Col key={item.id}>
-                <Tile card={item} cancel={removeOne} editCard={editCard} />
-              </Col>
-            );
-          })}
-        </Row>
-      </Container>
+      <div className="button-block">
+        <button onClick={addOne}>Add New Idea</button>
+        <button onClick={sortName}>Sort by Name</button>
+        <button onClick={sortDate}>Sort by Date</button>
+      </div>
+      {/* <div className="board"> */}
+      <div className="board__big">
+        {ideas.map((item) => {
+          return (
+            <span key={item.id}>
+              <Tile card={item} cancel={removeOne} editCard={editCard} />
+            </span>
+          );
+        })}
+      </div>
     </div>
   );
 };

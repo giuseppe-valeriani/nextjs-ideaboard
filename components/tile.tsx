@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Card, Container, Button } from 'react-bootstrap';
 import { Idea } from '../pages/index';
 
 type Props = {
@@ -55,49 +54,40 @@ const Tile = ({ card, cancel, editCard }: Props) => {
   };
 
   return (
-    <>
-      <Container className="my-3">
-        {edit ? (
-          <div>
-            <input
-              type="text"
-              value={title}
-              onChange={getTitle}
-              className="input-group-text"
-              aria-label="Title"
-            />
-            <input
-              type="text"
-              value={content}
-              onChange={getContent}
-              className="input-group-text"
-              aria-label="Content"
-              maxLength={140}
-            />
-            <div className="error">{error}</div>
+    <div className="board">
+      {edit ? (
+        <div className="tile-box__inputs">
+          <input
+            type="text"
+            value={title}
+            onChange={getTitle}
+            aria-label="Title"
+          />
+          <input
+            type="text"
+            value={content}
+            onChange={getContent}
+            aria-label="Content"
+            maxLength={140}
+          />
+          <div className="tile-box__error">{error}</div>
+          <div className="tile-box__edit">
+            <button onClick={editMode}>{'Save'}</button>
+            <button onClick={erase}>Remove</button>
           </div>
-        ) : (
-          <Card
-            style={{
-              minWidth: '150px',
-              minHeight: '200px',
-            }}
-          >
-            <Card.Header className="card-title">{title}</Card.Header>
-            <Card.Body>{content}</Card.Body>
-            <Card.Footer>{time}</Card.Footer>
-          </Card>
-        )}
-      </Container>
-      <div className="p-3">
-        <Button className="mx-1" size="sm" onClick={editMode}>
-          {edit ? 'Save' : 'Edit'}
-        </Button>
-        <Button className="mx-1" size="sm" variant="danger" onClick={erase}>
-          Remove
-        </Button>
-      </div>
-    </>
+        </div>
+      ) : (
+        <div className="tile-box">
+          <div className="tile-box__inner tile-box__title">{title}</div>
+          <div className="tile-box__inner tile-box__content">{content}</div>
+          <div className="tile-box__inner tile-box__time">{time}</div>
+          <div className="tile-box__inner tile-buttons">
+            <button onClick={editMode}>{'Edit'}</button>
+            <button onClick={erase}>Remove</button>
+          </div>
+        </div>
+      )}
+    </div>
   );
 };
 
